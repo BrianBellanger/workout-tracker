@@ -3,7 +3,7 @@ const htmlRoutes = require('./routes/htmlroutes');
 const apiRoutes = require('./routes/apiroutes');
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
