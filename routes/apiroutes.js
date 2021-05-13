@@ -2,16 +2,14 @@ const router = require('express').Router();
 const Workout = require('../models/WorkoutModel');
 
 router.get('/api/workouts', async (req, res) => {
-    // console.log("workouts route hit!");
     Workout.aggregate([
         { $addFields:{totalDuration:{$sum:"$exercises.duration"}}}
     ])
     .then((data) => {
-        // console.log(data)
-        return res.status(200).json(data)
+        return res.status(200).json(data);
     })
     .catch((err) => {
-        return res.status(500).json(err)
+        return res.status(500).json(err);
     });
 });
 
@@ -32,7 +30,7 @@ router.post('/api/workouts', async (req, res) => {
     console.log("workoutId::::" + workoutId);
     return res.status(200).json(workoutId);
     } catch (err) {
-        return res.status(500).json(err)
+        return res.status(500).json(err);
     }
 });
 
@@ -44,10 +42,10 @@ router.put("/api/workouts/:id", (req, res) => {
         req.params.id,
         { $push: { exercises: exercise }})
     .then((data) => {
-        return res.status(200).json(data)
+        return res.status(200).json(data);
     })
     .catch((err) => {
-        return res.status(500).json(err)
+        return res.status(500).json(err);
     })
 });
 
