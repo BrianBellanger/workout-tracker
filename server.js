@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
-app.use(htmlRoutes);
 app.use(apiRoutes);
+require('./routes/htmlRoutes')(app);
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
